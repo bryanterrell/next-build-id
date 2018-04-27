@@ -14,6 +14,7 @@ require('sywac')
   .parseAndExit()
   .then(argv => {
     argv.dir = path.resolve(process.cwd(), argv.dir || '.')
+    argv.gitDir = path.resolve(process.cwd(), argv.gitDir || '.')
     const nextBuildId = require('./index')
     return nextBuildId(argv)
   })
