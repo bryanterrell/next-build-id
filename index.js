@@ -20,7 +20,10 @@ module.exports = function nextBuildId (opts) {
     })
     .then(files => {
       result.files = files
-      return determineBuildId(opts.id, result.inputDir)
+      return resolveInputDir(opts.gitDir)
+    })
+    .then(gitDir => {
+      return determineBuildId(opts.id, gitDir)
     })
     .then(id => {
       result.id = id
